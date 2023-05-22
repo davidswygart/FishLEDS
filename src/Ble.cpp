@@ -6,6 +6,7 @@
 
 void ServerCallbacks::onConnect(NimBLEServer* pServer) {
     Serial.println("Client connected");
+    NimBLEDevice::startAdvertising();
 }
 
 void ServerCallbacks::onDisconnect(NimBLEServer* pServer) {
