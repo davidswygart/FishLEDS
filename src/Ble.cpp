@@ -2,7 +2,6 @@
 #include <Arduino.h>
 #include <WiFi.h>
 #include "Ble.h"
-#include "globals.h"
 
 void ServerCallbacks::onConnect(NimBLEServer* pServer) {
     Serial.println("Client connected");
@@ -26,8 +25,7 @@ void LedsCallbacks::onWrite(NimBLECharacteristic* pCharacteristic){
     Serial.print("; blue= ");Serial.print(s.vals[2]);
     Serial.print("; white= ");Serial.println(s.vals[3]);
 
-    int numberOfTargetLeds = sizeof(RGBW_pins)/sizeof(RGBW_pins[0]);
-    for(int i=0; i<numberOfTargetLeds; i++){
+    for(int i=0; i<4; i++){
         ledcWrite(i, s.vals[i]);
     }
 }
